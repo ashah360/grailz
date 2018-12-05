@@ -8,9 +8,9 @@
 
 import UIKit
 
-class Data: NSObject {
+class ShoesData: NSObject {
     
-    static let shared = Data()
+    static let shared = ShoesData()
 
     open var shoes: [Int: [String: String]] = [
         0: [

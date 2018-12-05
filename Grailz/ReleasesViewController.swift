@@ -12,7 +12,7 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tblReleases: UITableView!
     
-    var appData = Data.shared
+    var appData = ShoesData.shared
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appData.shoes.count

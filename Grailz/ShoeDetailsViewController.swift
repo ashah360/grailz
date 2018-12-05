@@ -7,6 +7,33 @@
 //
 
 import UIKit
+import AVKit
+
+class YoutubeCell: UITableViewCell {
+  @IBOutlet weak var img: UIImageView!
+  @IBOutlet weak var title: UILabel!
+  @IBOutlet weak var desc: UILabel!
+}
+
+struct YouTubeVideo {
+    var title: String
+    var desc: String
+    var img: String
+    var url: String
+    
+    init(json: [String: Any]) {
+        let id = json["id"] as! [String: Any]
+        let snippet = json["snippet"] as! [String: Any]
+        
+        url = "https://www.youtube.com/watch?v=" + (id["videoId"] as! String)
+        title = snippet["title"] as! String
+        desc = snippet["description"] as! String
+        let thumb = snippet["thumbnails"] as! [String: Any]
+        let defaultThumb = thumb["default"] as! [String: Any]
+        img = defaultThumb["url"] as! String
+
+    }
+}
 
 class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,18 +44,41 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tblVideoReviews: UITableView!
     
+    var youTubeVideos : [YouTubeVideo] = []
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = URL(string: youTubeVideos[indexPath.row].url),
+            UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
+        }
+
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return youTubeVideos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tblVideoReviews.dequeueReusableCell(withIdentifier: "Video") as! VideoReviewsTableViewCell
-//        cell.lblVideo.text = "Video 1"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "youTubeCell", for: indexPath) as! YoutubeCell
+        let video = youTubeVideos[indexPath.row]
+        cell.title?.text = video.title
+        cell.desc?.text = video.desc
+        if let imgUrl = URL(string: video.img) {
+            do {
+                let data = try Data(contentsOf: imgUrl)
+                cell.img.image = UIImage(data: data)
+            } catch let err {
+                print(err)
+            }
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
     
-    var appData = Data.shared
+    var appData = ShoesData.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +86,46 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
         lblShoeName.text = appData.shoes[appData.row]!["name"]
         lblReleaseDate.text = appData.shoes[appData.row]!["date"]
         lblDescription.text = appData.shoes[appData.row]!["description"]
+        
+        self.tblVideoReviews.dataSource = self
+        self.tblVideoReviews.delegate = self
+        self.tblVideoReviews.tableFooterView = UIView()
+        loadURL()
+    }
+    
+    func loadURL() {
+        let keyword = "sneakers"
+        // TODO use an actual keyword after sneaker data is loaded
+        let apiKey = "AIzaSyDpvNb3Ro5qwtCbZAekxgbMzbPvSrEV4so"
+        let urlString = "https://www.googleapis.com/youtube/v3/search"
+        var youtubeURL = URLComponents(string: urlString)
+        youtubeURL?.queryItems = [
+            URLQueryItem(name: "part", value: "snippet"),
+            URLQueryItem(name: "maxResults", value: "2"),
+            URLQueryItem(name: "q", value: keyword),
+            URLQueryItem(name: "type", value: "video"),
+            URLQueryItem(name: "key", value: apiKey)
+        ]
+        URLSession.shared.dataTask(with: (youtubeURL?.url)!) { (data, response, err) in
+            if let error = err {
+                print("URL Session Error: ", error)
+            }
+            
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+                    if let videoArray = json["items"] as? [Any] {
+                        for video in videoArray {
+                            self.youTubeVideos.append(YouTubeVideo(json: video as! [String : Any]))
+                        }
+                        DispatchQueue.main.async {
+                            self.tblVideoReviews.reloadData()
+                        }
+                    }
+                } catch let jsonErr {
+                    print("Error serialize json: ", jsonErr)
+                }
+            }
+        }.resume()
     }
 }
