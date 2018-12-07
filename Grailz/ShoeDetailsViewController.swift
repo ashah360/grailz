@@ -38,8 +38,8 @@ struct YouTubeVideo {
 class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var imgPic: UIImageView!
-    @IBOutlet weak var lblShoeName: UILabel!
-    @IBOutlet weak var lblReleaseDate: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblRelease: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tblVideoReviews: UITableView!
@@ -82,10 +82,11 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imgPic.image = UIImage(named: appData.shoes[appData.row]!["img"]!)
-        lblShoeName.text = appData.shoes[appData.row]!["name"]
-        lblReleaseDate.text = appData.shoes[appData.row]!["date"]
-        lblDescription.text = appData.shoes[appData.row]!["description"]
+        
+        imgPic.image = UIImage(data: appData.imgUrl)
+        lblTitle.text = appData.title
+        lblRelease.text = appData.release
+        lblDescription.text = "Description..?"
         
         self.tblVideoReviews.dataSource = self
         self.tblVideoReviews.delegate = self
