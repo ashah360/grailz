@@ -15,7 +15,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
   
   var shoeList = [Shoe]()
   var currentResults = [Shoe]()
-  let appData = Data.shared
+  let appData = ShoesData.shared
   
   override func viewDidLoad() {
     super.viewDidLoad()
