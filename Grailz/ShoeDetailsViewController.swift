@@ -83,9 +83,9 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imgPic.image = UIImage(data: appData.imgUrl)
-        lblTitle.text = appData.title
-        lblRelease.text = appData.release
+        imgPic.image = UIImage(data: appData.releaseList[appData.row].img)
+        lblTitle.text = appData.releaseList[appData.row].title
+        lblRelease.text = appData.releaseList[appData.row].release
         lblDescription.text = "Description..?"
         
         self.tblVideoReviews.dataSource = self

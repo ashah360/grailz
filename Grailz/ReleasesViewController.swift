@@ -22,13 +22,6 @@ struct productList: Decodable {
     //description?
 }
 
-struct shoeElement {
-    let index: Int
-    let title: String
-    let release: String
-    let img: Data
-}
-
 
 class ReleasesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -37,17 +30,15 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var appData = ShoesData.shared
     
-    var releaseList: [shoeElement] = []
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return releaseList.count
+        return self.appData.releaseList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblReleases.dequeueReusableCell(withIdentifier: "Shoe") as! ShoeCellTableViewCell
-        cell.imgPic.image = UIImage(data: self.releaseList[indexPath.row].img)
-        cell.lblTitle.text = self.releaseList[indexPath.row].title
-        cell.lblRelease.text = self.releaseList[indexPath.row].release
+        cell.imgPic.image = UIImage(data: self.appData.releaseList[indexPath.row].img)
+        cell.lblTitle.text = self.appData.releaseList[indexPath.row].title
+        cell.lblRelease.text = self.appData.releaseList[indexPath.row].release
         return cell
     }
     
@@ -56,10 +47,7 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        appData.row = indexPath.row
-        appData.title = self.releaseList[appData.row].title
-        appData.release = self.releaseList[appData.row].release
-        appData.imgUrl = self.releaseList[appData.row].img
+        self.appData.row = indexPath.row
         performSegue(withIdentifier: "toShoeDetails", sender: self)
     }
     
@@ -86,7 +74,7 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
                     }
                     
                     let x = shoeElement(index: index, title: shoe.title!, release: shoe.release!, img: data!)
-                    self.releaseList.append(x)
+                    self.appData.releaseList.append(x)
                     index += 1
                 }
                 self.tblReleases.reloadData()
@@ -99,7 +87,7 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        appData.row = 0
+        self.appData.row = 0
         fetchJSON()
         // Do any additional setup after loading the view, typically from a nib.
     }
