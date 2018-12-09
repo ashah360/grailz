@@ -10,11 +10,17 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+    var user : String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (user == nil) {
+            performSegue(withIdentifier: "toLogin", sender: self)
+        }
+    }
 
 }
 
