@@ -27,6 +27,17 @@ class HistoryCell: UITableViewCell {
 
 class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var historys : [History] = []
+    var appData = ShoesData.shared
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product_id = historys[indexPath.row].product_id
+        for i in 0..<appData.releaseList.count {
+            if appData.releaseList[i]._id == product_id {
+                appData.row = i
+            }
+        }
+        performSegue(withIdentifier: "toShoeDetails", sender: self)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return historys.count
@@ -53,7 +64,6 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
 
     //var user : String? = nil
-    var appData = ShoesData.shared
     
     @IBOutlet weak var UsernameLb: UILabel!
     @IBOutlet weak var historyTable: UITableView!
