@@ -16,7 +16,7 @@ struct productList: Decodable {
     let release: String?
     let images: [String: String]?
     let price: [String: String]?
-    let votes: [Int]?
+  let votes: [[String: String]]?
     let _v: Int?
     
     //description?
