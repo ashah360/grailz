@@ -13,6 +13,9 @@ struct shoeElement {
     let title: String
     let release: String
     let img: Data
+    let _id: String
+    let price: [String: String]
+    var votes: [[String: String]]
 }
 
 class ShoesData: NSObject {
