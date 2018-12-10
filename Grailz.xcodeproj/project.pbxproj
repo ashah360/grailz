@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060271E821BDFAA300704E0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 060271E721BDFAA200704E0B /* Assets.xcassets */; };
 		060F91DC21AFED6F00890863 /* ShoeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F91DB21AFED6F00890863 /* ShoeDetailsViewController.swift */; };
 		0628D51D21BB2CA600A7786E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628D51C21BB2CA600A7786E /* SearchViewController.swift */; };
 		0628D51F21BB2E7D00A7786E /* SearchShoeResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628D51E21BB2E7D00A7786E /* SearchShoeResultCell.swift */; };
@@ -15,7 +16,6 @@
 		068C4DE421AFE41D009AC6F8 /* ReleasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4DE321AFE41D009AC6F8 /* ReleasesViewController.swift */; };
 		068C4DE621AFE41D009AC6F8 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4DE521AFE41D009AC6F8 /* AccountViewController.swift */; };
 		068C4DE921AFE41D009AC6F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068C4DE721AFE41D009AC6F8 /* Main.storyboard */; };
-		068C4DEB21AFE422009AC6F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 068C4DEA21AFE422009AC6F8 /* Assets.xcassets */; };
 		068C4DEE21AFE422009AC6F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068C4DEC21AFE422009AC6F8 /* LaunchScreen.storyboard */; };
 		068C4DF921AFE422009AC6F8 /* GrailzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4DF821AFE422009AC6F8 /* GrailzTests.swift */; };
 		068C4E0421AFE422009AC6F8 /* GrailzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4E0321AFE422009AC6F8 /* GrailzUITests.swift */; };
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060271E721BDFAA200704E0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		060F91DB21AFED6F00890863 /* ShoeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeDetailsViewController.swift; sourceTree = "<group>"; };
 		0628D51C21BB2CA600A7786E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0628D51E21BB2E7D00A7786E /* SearchShoeResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShoeResultCell.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		068C4DE321AFE41D009AC6F8 /* ReleasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleasesViewController.swift; sourceTree = "<group>"; };
 		068C4DE521AFE41D009AC6F8 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		068C4DE821AFE41D009AC6F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		068C4DEA21AFE422009AC6F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		068C4DED21AFE422009AC6F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		068C4DEF21AFE422009AC6F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		068C4DF421AFE422009AC6F8 /* GrailzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrailzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,13 +111,13 @@
 		068C4DE021AFE41D009AC6F8 /* Grailz */ = {
 			isa = PBXGroup;
 			children = (
+				060271E721BDFAA200704E0B /* Assets.xcassets */,
 				068C4DE121AFE41D009AC6F8 /* AppDelegate.swift */,
 				068C4DE321AFE41D009AC6F8 /* ReleasesViewController.swift */,
 				068C4DE521AFE41D009AC6F8 /* AccountViewController.swift */,
 				0628D51C21BB2CA600A7786E /* SearchViewController.swift */,
 				0628D51E21BB2E7D00A7786E /* SearchShoeResultCell.swift */,
 				068C4DE721AFE41D009AC6F8 /* Main.storyboard */,
-				068C4DEA21AFE422009AC6F8 /* Assets.xcassets */,
 				068C4DEC21AFE422009AC6F8 /* LaunchScreen.storyboard */,
 				068C4DEF21AFE422009AC6F8 /* Info.plist */,
 				068C4E1121AFE63D009AC6F8 /* ShoesData.swift */,
@@ -251,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				068C4DEE21AFE422009AC6F8 /* LaunchScreen.storyboard in Resources */,
-				068C4DEB21AFE422009AC6F8 /* Assets.xcassets in Resources */,
+				060271E821BDFAA300704E0B /* Assets.xcassets in Resources */,
 				068C4DE921AFE41D009AC6F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
