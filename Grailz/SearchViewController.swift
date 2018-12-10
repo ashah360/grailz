@@ -95,5 +95,4 @@ class Shoe {
         self.shoeName = shoeName
         self.shoeImage = shoeImage
     }
-    
 }
