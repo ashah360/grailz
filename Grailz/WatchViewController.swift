@@ -21,21 +21,17 @@ class WatchViewController: UICollectionViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    
     super.viewDidAppear(animated)
-    
     AppDelegate.AppUtility.lockOrientation(.portrait)
-    
   }
   
-  
-  
   override func viewWillDisappear(_ animated: Bool) {
-    
     super.viewWillDisappear(animated)
-    
     AppDelegate.AppUtility.lockOrientation(.all)
-    
+  }
+  
+  override open var shouldAutorotate: Bool {
+    return false
   }
   
   // Stores the records of shoes from Data.swift
@@ -44,11 +40,6 @@ class WatchViewController: UICollectionViewController {
       shoeList.append(Shoe(shoeName: appData.releaseList[i].title, shoeImage:appData.releaseList[i].img))
     }
   }
-  
-  override open var shouldAutorotate: Bool {
-    return false
-  }
-  
 }
 
 extension WatchViewController: UICollectionViewDelegateFlowLayout {
