@@ -27,17 +27,6 @@ class HistoryCell: UITableViewCell {
 
 class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var historys : [History] = []
-    var appData = ShoesData.shared
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product_id = historys[indexPath.row].product_id
-        for i in 0..<appData.releaseList.count {
-            if appData.releaseList[i]._id == product_id {
-                appData.row = i
-            }
-        }
-        performSegue(withIdentifier: "toShoeDetails", sender: self)
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return historys.count
@@ -58,45 +47,35 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(90)
-    }
-    
 
-    //var user : String? = nil
+    var user : String? = nil
     
     @IBOutlet weak var UsernameLb: UILabel!
     @IBOutlet weak var historyTable: UITableView!
-    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let user = appData.username {
-            UsernameLb.text = user
-            imageView.image = UIImage(named: "user-circle")
+        if (user != nil) {
+            UsernameLb.text = "Hi, " + user! + " !"
+            self.historyTable.dataSource = self
+            self.historyTable.delegate = self
+            self.historyTable.tableFooterView = UIView()
             loadHistorys()
         }
-        self.historyTable.dataSource = self
-        self.historyTable.delegate = self
-        self.historyTable.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (appData.username == nil) {
+        if (user == nil) {
             performSegue(withIdentifier: "toLogin", sender: self)
         }
     }
     
     func loadHistorys() {
-        let username = appData.username!
-        guard let url = URL(string: "https://graliz-account.herokuapp.com/history?username=\(username)") else { return }
-        URLSession.shared.dataTask(with: url) {
+        URLSession.shared.dataTask(with: URL(string: "http://grailz-account.herokuapp.com/history?username=\(user!)")!) {
             (data, response, err) in
             guard let data = data, err == nil else {
                 return
             }
-            let stringData = String(data: data, encoding: .utf8)
-            print(stringData as Any)
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                 if let historyArray = json as? [Any] {
@@ -110,7 +89,7 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             } catch let jsonErr {
                 print("Error serialize json: ", jsonErr)
             }
-        }.resume()
+        }
     }
 
 }
