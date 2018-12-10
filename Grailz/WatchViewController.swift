@@ -21,13 +21,21 @@ class WatchViewController: UICollectionViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
+    
     super.viewDidAppear(animated)
+    
     AppDelegate.AppUtility.lockOrientation(.portrait)
+    
   }
   
+  
+  
   override func viewWillDisappear(_ animated: Bool) {
+    
     super.viewWillDisappear(animated)
+    
     AppDelegate.AppUtility.lockOrientation(.all)
+    
   }
   
   // Stores the records of shoes from Data.swift
