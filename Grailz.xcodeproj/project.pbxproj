@@ -21,6 +21,8 @@
 		068C4E0421AFE422009AC6F8 /* GrailzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4E0321AFE422009AC6F8 /* GrailzUITests.swift */; };
 		068C4E1221AFE63D009AC6F8 /* ShoesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4E1121AFE63D009AC6F8 /* ShoesData.swift */; };
 		068C4E1421AFE795009AC6F8 /* ShoeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C4E1321AFE795009AC6F8 /* ShoeCellTableViewCell.swift */; };
+		80F3999921BE247D00C715C8 /* WatchShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3999821BE247D00C715C8 /* WatchShoeCell.swift */; };
+		80F3999B21BE5BB800C715C8 /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3999A21BE5BB800C715C8 /* WatchViewController.swift */; };
 		41F52F9021BDD2C700184FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F52F8F21BDD2C700184FEF /* LoginViewController.swift */; };
 		80F4D38521B63109005B7BFA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F4D38421B63109005B7BFA /* SearchViewController.swift */; };
 		80F4D38721B634F4005B7BFA /* SearchShoeResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F4D38621B634F4005B7BFA /* SearchShoeResultCell.swift */; };
@@ -64,6 +66,8 @@
 		068C4E0521AFE422009AC6F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		068C4E1121AFE63D009AC6F8 /* ShoesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoesData.swift; sourceTree = "<group>"; };
 		068C4E1321AFE795009AC6F8 /* ShoeCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeCellTableViewCell.swift; sourceTree = "<group>"; };
+		80F3999821BE247D00C715C8 /* WatchShoeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchShoeCell.swift; sourceTree = "<group>"; };
+		80F3999A21BE5BB800C715C8 /* WatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 		41F52F8F21BDD2C700184FEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80F4D38421B63109005B7BFA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		80F4D38621B634F4005B7BFA /* SearchShoeResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShoeResultCell.swift; sourceTree = "<group>"; };
@@ -124,7 +128,8 @@
 				0628D51C21BB2CA600A7786E /* SearchViewController.swift */,
 				0628D51E21BB2E7D00A7786E /* SearchShoeResultCell.swift */,
 				068C4DE721AFE41D009AC6F8 /* Main.storyboard */,
-
+				80F3999821BE247D00C715C8 /* WatchShoeCell.swift */,
+				80F3999A21BE5BB800C715C8 /* WatchViewController.swift */,
 				41F52F8F21BDD2C700184FEF /* LoginViewController.swift */,
 				068C4DEA21AFE422009AC6F8 /* Assets.xcassets */,
 				068C4DEC21AFE422009AC6F8 /* LaunchScreen.storyboard */,
@@ -290,7 +295,9 @@
 				068C4DE621AFE41D009AC6F8 /* AccountViewController.swift in Sources */,
 				0628D51F21BB2E7D00A7786E /* SearchShoeResultCell.swift in Sources */,
 				0628D51D21BB2CA600A7786E /* SearchViewController.swift in Sources */,
+				80F3999921BE247D00C715C8 /* WatchShoeCell.swift in Sources */,
 				068C4E1421AFE795009AC6F8 /* ShoeCellTableViewCell.swift in Sources */,
+				80F3999B21BE5BB800C715C8 /* WatchViewController.swift in Sources */,
 				068C4DE221AFE41D009AC6F8 /* AppDelegate.swift in Sources */,
 				063B7D2D21AFF995004E3A3E /* VideoReviewsTableViewCell.swift in Sources */,
 				068C4DE421AFE41D009AC6F8 /* ReleasesViewController.swift in Sources */,

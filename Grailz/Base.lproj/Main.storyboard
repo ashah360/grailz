@@ -574,14 +574,61 @@
         <!--Watchlist-->
         <scene sceneID="Cps-7F-iuq">
             <objects>
-                <viewController title="Watchlist" id="ipf-Eu-Tgq" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="343-Qk-Szw">
+                <viewController title="Watchlist" id="ipf-Eu-Tgq" customClass="WatchViewController" customModule="Grailz" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="spq-px-cvg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="fih-iC-Ngj"/>
-                    </view>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="83D-hB-hHa">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WatchShoeCell" id="qd8-l3-PFC" customClass="WatchShoeCell" customModule="Grailz" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UAs-kc-fzX">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VbR-hm-NWk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="VbR-hm-NWk" firstAttribute="leading" secondItem="UAs-kc-fzX" secondAttribute="leading" id="gIX-qF-agS"/>
+                                                <constraint firstAttribute="bottom" secondItem="VbR-hm-NWk" secondAttribute="bottom" id="ify-UP-Ju5"/>
+                                                <constraint firstAttribute="trailing" secondItem="VbR-hm-NWk" secondAttribute="trailing" id="lhB-IA-ObH"/>
+                                                <constraint firstItem="VbR-hm-NWk" firstAttribute="top" secondItem="UAs-kc-fzX" secondAttribute="top" id="vdN-BY-tIB"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="UAs-kc-fzX" secondAttribute="bottom" id="M3A-fD-wwJ"/>
+                                    <constraint firstItem="UAs-kc-fzX" firstAttribute="leading" secondItem="qd8-l3-PFC" secondAttribute="leading" id="TCt-BM-lWE"/>
+                                    <constraint firstAttribute="trailing" secondItem="UAs-kc-fzX" secondAttribute="trailing" id="ofy-Un-171"/>
+                                    <constraint firstItem="UAs-kc-fzX" firstAttribute="top" secondItem="qd8-l3-PFC" secondAttribute="top" id="xIP-cU-1TY"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="ContainerView" destination="UAs-kc-fzX" id="m4f-cq-LWP"/>
+                                    <outlet property="ShoeImageView" destination="VbR-hm-NWk" id="rIY-hB-fBx"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ipf-Eu-Tgq" id="yMp-Nu-7H7"/>
+                            <outlet property="delegate" destination="ipf-Eu-Tgq" id="5rR-1b-tKt"/>
+                        </connections>
+                    </collectionView>
                     <tabBarItem key="tabBarItem" title="Watchlist" image="star" selectedImage="star" id="181-i1-u7x"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IzR-uF-uCn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
