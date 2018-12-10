@@ -14,8 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var pwdTF: UITextField!
     
     
-    //var user : String? = nil
-    var appData = ShoesData.shared
+    var user : String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +43,9 @@ class LoginViewController: UIViewController {
                     let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
                     if let result = json["result"] as? String {
                         if result == "success" {
-                            //self.user = (json["username"] as! String)
-                            self.appData.username = (json["username"] as! String)
+                            self.user = (json["username"] as! String)
                             DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "backAccount", sender: self)
+                                self.performSegue(withIdentifier: "toAccount", sender: self)
                             }
                         }
                     }
@@ -59,9 +57,9 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backAccount" {
-            let tabVC = segue.destination as! UITabBarController
-            tabVC.selectedIndex = 1
+        if segue.identifier == "toAccount" {
+            let accountVC = segue.destination as! AccountViewController
+            accountVC.user = user
         }
     }
     

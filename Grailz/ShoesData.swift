@@ -13,7 +13,6 @@ struct shoeElement {
     let title: String
     let release: String
     let img: Data
-    let imgUrl: String
     let _id: String
     let price: [String: String]
     var votes: [[String: String]]
@@ -27,5 +26,4 @@ class ShoesData: NSObject {
     
     open var row = 0
     
-    open var username: String? = nil
 }
