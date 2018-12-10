@@ -8,24 +8,18 @@
 
 import UIKit
 
+struct shoeElement {
+    let index: Int
+    let title: String
+    let release: String
+    let img: Data
+}
+
 class ShoesData: NSObject {
     
     static let shared = ShoesData()
-
-    open var shoes: [Int: [String: String]] = [
-        0: [
-            "img": "bred4s.jpeg",
-            "name": "(0) Air Jordan Bred 4",
-            "date": "xx/xx/xx",
-            "description": "Details...",
-        ],
-        1: [
-            "img": "bred4s.jpeg",
-            "name": "(1) Air Jordan Bred 4",
-            "date": "xx/xx/xx",
-            "description": "Details...",
-        ]
-    ]
+    
+    open var releaseList: [shoeElement] = []
     
     open var row = 0
     
