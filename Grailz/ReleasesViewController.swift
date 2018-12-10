@@ -35,48 +35,51 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tblReleases.dequeueReusableCell(withIdentifier: "Shoe") as! ShoeCellTableViewCell
         cell.imgPic.image = UIImage(data: self.appData.releaseList[indexPath.row].img)
         cell.lblTitle.text = self.appData.releaseList[indexPath.row].title
-        cell.lblRelease.text = self.appData.releaseList[indexPath.row].release
-        
-        date()
+        cell.lblRelease.text = date()
         
         return cell
     }
     
-    func date() {
-        let date = self.appData.releaseList[appData.row].release
-        var month = date.firstIndex(of: "-")
-//        switch month {
-//        case month = "01-":
-//            month = "January"
-//        case month = "02-":
-//            month = "February"
-//        case month = "03-":
-//            month = "March"
-//        case month = "04-":
-//            month = "April"
-//        case month = "05-":
-//            month = "May"
-//        case month == "06-":
-//            month = "June"
-//        case month == "07-":
-//            month = "July"
-//        case month == "08-":
-//            month = "August"
-//        case month == "09-":
-//            month = "September"
-//        case month == "10-":
-//            month = "October"
-//        case month == "11-":
-//            month = "November"
-//        case month == "12-":
-//            month = "December"
-//        default:
-//            month = "error"
-//        }
+    func date() -> String {
+        let date = self.appData.releaseList[appData.row].release.components(separatedBy: "-")
+        let year = date[0]
+        var month = date[1]
+        let dayTime = date[2]
+        let day = dayTime.components(separatedBy: "T")[0]
+        
+        switch month {
+        case "01":
+            month = "January"
+        case "02":
+            month = "February"
+        case "03":
+            month = "March"
+        case "04":
+            month = "April"
+        case "05":
+            month = "May"
+        case "06":
+            month = "June"
+        case "07":
+            month = "July"
+        case "08":
+            month = "August"
+        case "09":
+            month = "September"
+        case "10":
+            month = "October"
+        case "11":
+            month = "November"
+        case "12":
+            month = "December"
+        default:
+            month = "error"
+        }
+        return "\(month) \(day)"
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 330
+        return 400
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,8 +93,6 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
         URLSession.shared.dataTask(with: url) { (data, response, err) in DispatchQueue.main.async {
             guard let data = data else { return }
             do {
-                let stringData = String(data: data, encoding: .utf8)
-                print(stringData)
                 let shoes =  try JSONDecoder().decode([productList].self, from: data)
                 var index = 0
                 for shoe in shoes {
