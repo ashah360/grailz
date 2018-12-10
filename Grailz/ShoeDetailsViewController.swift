@@ -40,16 +40,18 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var imgPic: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblRelease: UILabel!
-    @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tblVideoReviews: UITableView!
+    @IBOutlet weak var btnCop: UIButton!
+    @IBOutlet weak var btnPass: UIButton!
+    
     
     var youTubeVideos : [YouTubeVideo] = []
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let url = URL(string: youTubeVideos[indexPath.row].url),
             UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
 
     }
@@ -83,10 +85,12 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonShadow(button: btnCop)
+        buttonShadow(button: btnPass)
+        
         imgPic.image = UIImage(data: appData.releaseList[appData.row].img)
         lblTitle.text = appData.releaseList[appData.row].title
         lblRelease.text = appData.releaseList[appData.row].release
-        lblDescription.text = "Description..?"
         
         self.tblVideoReviews.dataSource = self
         self.tblVideoReviews.delegate = self
@@ -94,8 +98,15 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
         loadURL()
     }
     
+    func buttonShadow(button: UIButton) {
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 5)
+        button.layer.shadowRadius = 5
+        button.layer.shadowOpacity = 0.5
+    }
+    
     func loadURL() {
-        let keyword = "sneakers"
+        let keyword = "\(appData.releaseList[appData.row].title) review"
         // TODO use an actual keyword after sneaker data is loaded
         let apiKey = "AIzaSyDpvNb3Ro5qwtCbZAekxgbMzbPvSrEV4so"
         let urlString = "https://www.googleapis.com/youtube/v3/search"
@@ -129,4 +140,77 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }.resume()
     }
+    
+    @IBAction func btnCop(_ sender: Any) {
+        print("Cop")
+        getVotes()
+        postSetup()
+        getVotes()
+    }
+    
+    @IBAction func btnPass(_ sender: Any) {
+        print("Pass")
+    }
+    
+    func getVotes() {
+        guard let url = URL(string: "http://grailz.herokuapp.com/api/product/\(appData.releaseList[appData.row]._id)") else { return }
+        let session = URLSession.shared
+        session.dataTask(with: url) { (data, response, err) in
+            if let response = response {
+                print(response)
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
+
+    public func postSetup() {
+        let parameters = ["result": 0]
+        
+        guard let url = URL(string: "http://grailz.herokuapp.com/api/product/\(appData.releaseList[appData.row]._id)/vote") else {return}
+        
+            print(url)
+        
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+            request.httpBody = httpBody
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            let session = URLSession.shared
+            session.dataTask(with: request) { (data, response, err) in
+                if let response = response {
+                    print(response)
+                }
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.resume()
+    }
+    
+    public func postVote(vote: Int) {
+        //        print("http://grailz.herokuapp.com/api/product/\(appData.releaseList[appData.row]._id)")
+        //
+        //        let parameters = ["votes": appData.releaseList[appData.row]]
+        //
+        //        guard let url = URL(string: "http://grailz.herokuapp.com/api/product/\(appData.releaseList[appData.row]._id)") else {return}
+        //        var request = URLRequest(url: url)
+        //        request.httpMethod = "POST"
+        //        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+        //        request.httpBody = httpBody
+        //        let session = URLSession.shared
+        //        session.dataTask(with: request) { (data, response, err) in
+        //            <#code#>
+        //        }
+    }
+    
 }
