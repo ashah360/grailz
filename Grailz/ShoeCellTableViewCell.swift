@@ -11,7 +11,10 @@ import UIKit
 class ShoeCellTableViewCell: UITableViewCell {
 
 
+    
     @IBOutlet weak var imgPic: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblRelease: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

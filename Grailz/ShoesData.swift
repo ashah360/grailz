@@ -17,15 +17,17 @@ class ShoesData: NSObject {
             "img": "bred4s.jpeg",
             "name": "(0) Air Jordan Bred 4",
             "date": "xx/xx/xx",
-            "description": "Details...",
         ],
         1: [
             "img": "bred4s.jpeg",
             "name": "(1) Air Jordan Bred 4",
             "date": "xx/xx/xx",
-            "description": "Details...",
         ]
     ]
+    
+    open var title = ""
+    open var release = ""
+    open var imgUrl: Data = Data()
     
     open var row = 0
     
