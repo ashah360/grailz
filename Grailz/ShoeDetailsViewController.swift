@@ -96,6 +96,40 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
         self.tblVideoReviews.delegate = self
         self.tblVideoReviews.tableFooterView = UIView()
         loadURL()
+        if appData.username != nil {
+            sendHistoryToServer()
+
+        }
+    }
+    
+    func sendHistoryToServer() {
+        let username = appData.username!
+        let id = appData.releaseList[appData.row]._id
+        let title = appData.releaseList[appData.row].title
+        let image = appData.releaseList[appData.row].imgUrl
+        
+        var request = URLRequest(url: URL(string: "https://graliz-account.herokuapp.com/history")!)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let postString = "username=\(username)&product_id=\(id)&title=\(title)&image=\(image)"
+        request.httpBody = postString.data(using: .utf8)
+        DispatchQueue.main.async {
+            URLSession.shared.dataTask(with: request) { (data, response, err) in
+                guard let data = data, err == nil else {
+                    return
+                }
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+                    if let err = json["error"] as? String {
+                        let alert = UIAlertController(title: "Error", message: err, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                } catch let jsonErr {
+                    print("Error serialize json: ", jsonErr)
+                }
+            }.resume()
+        }
     }
     
     func buttonShadow(button: UIButton) {

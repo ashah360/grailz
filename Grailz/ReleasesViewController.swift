@@ -107,7 +107,7 @@ class ReleasesViewController: UIViewController, UITableViewDataSource, UITableVi
                         }
                     }
                     
-                    let x = shoeElement(index: index, title: shoe.title!, release: shoe.release!, img: data!, _id: shoe._id!, price: shoe.price!, votes: shoe.votes!)
+                    let x = shoeElement(index: index, title: shoe.title!, release: shoe.release!, img: data!, imgUrl: shoe.images!["product"]!, _id: shoe._id!, price: shoe.price!, votes: shoe.votes!)
                     self.appData.releaseList.append(x)
                     index += 1
                 }
