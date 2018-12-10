@@ -90,12 +90,50 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
         
         imgPic.image = UIImage(data: appData.releaseList[appData.row].img)
         lblTitle.text = appData.releaseList[appData.row].title
-        lblRelease.text = appData.releaseList[appData.row].release
+        lblRelease.text = date()
         
         self.tblVideoReviews.dataSource = self
         self.tblVideoReviews.delegate = self
         self.tblVideoReviews.tableFooterView = UIView()
         loadURL()
+    }
+    
+    func date() -> String {
+        let date = self.appData.releaseList[appData.row].release.components(separatedBy: "-")
+        let year = date[0]
+        var month = date[1]
+        let dayTime = date[2]
+        let day = dayTime.components(separatedBy: "T")[0]
+        
+        switch month {
+        case "01":
+            month = "January"
+        case "02":
+            month = "February"
+        case "03":
+            month = "March"
+        case "04":
+            month = "April"
+        case "05":
+            month = "May"
+        case "06":
+            month = "June"
+        case "07":
+            month = "July"
+        case "08":
+            month = "August"
+        case "09":
+            month = "September"
+        case "10":
+            month = "October"
+        case "11":
+            month = "November"
+        case "12":
+            month = "December"
+        default:
+            month = "error"
+        }
+        return "\(month) \(day)"
     }
     
     func buttonShadow(button: UIButton) {
@@ -143,9 +181,9 @@ class ShoeDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func btnCop(_ sender: Any) {
         print("Cop")
-        getVotes()
-        postSetup()
-        getVotes()
+//        getVotes()
+//        postSetup()
+//        getVotes()
     }
     
     @IBAction func btnPass(_ sender: Any) {
