@@ -683,6 +683,7 @@
                         <outlet property="historyTable" destination="V0z-bD-k4n" id="k7a-cI-19F"/>
                         <outlet property="imageView" destination="HQk-Th-bgI" id="QIw-0r-zVF"/>
                         <segue destination="Kk9-a2-95L" kind="show" identifier="toLogin" id="tPm-qD-Mz6"/>
+                        <segue destination="8ab-eP-L1W" kind="show" identifier="toShoeDetails" id="hPd-eH-JeD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GsV-vx-37p" sceneMemberID="firstResponder"/>
@@ -702,6 +703,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QHj-Uc-a38"/>
-        <segue reference="bv5-GT-WPJ"/>
+        <segue reference="hPd-eH-JeD"/>
     </inferredMetricsTieBreakers>
 </document>
