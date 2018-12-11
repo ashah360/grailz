@@ -24,6 +24,8 @@
 		80F3999921BE247D00C715C8 /* WatchShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3999821BE247D00C715C8 /* WatchShoeCell.swift */; };
 		80F3999B21BE5BB800C715C8 /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3999A21BE5BB800C715C8 /* WatchViewController.swift */; };
 		41F52F9021BDD2C700184FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F52F8F21BDD2C700184FEF /* LoginViewController.swift */; };
+		80F4D38521B63109005B7BFA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F4D38421B63109005B7BFA /* SearchViewController.swift */; };
+		80F4D38721B634F4005B7BFA /* SearchShoeResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F4D38621B634F4005B7BFA /* SearchShoeResultCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		80F3999821BE247D00C715C8 /* WatchShoeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchShoeCell.swift; sourceTree = "<group>"; };
 		80F3999A21BE5BB800C715C8 /* WatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 		41F52F8F21BDD2C700184FEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		80F4D38421B63109005B7BFA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		80F4D38621B634F4005B7BFA /* SearchShoeResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShoeResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +125,6 @@
 				068C4DE121AFE41D009AC6F8 /* AppDelegate.swift */,
 				068C4DE321AFE41D009AC6F8 /* ReleasesViewController.swift */,
 				068C4DE521AFE41D009AC6F8 /* AccountViewController.swift */,
-				41F52F8F21BDD2C700184FEF /* LoginViewController.swift */,
-				060F91DB21AFED6F00890863 /* ShoeDetailsViewController.swift */,
 				0628D51C21BB2CA600A7786E /* SearchViewController.swift */,
 				0628D51E21BB2E7D00A7786E /* SearchShoeResultCell.swift */,
 				068C4DE721AFE41D009AC6F8 /* Main.storyboard */,
@@ -134,6 +136,7 @@
 				068C4DEF21AFE422009AC6F8 /* Info.plist */,
 				068C4E1121AFE63D009AC6F8 /* ShoesData.swift */,
 				068C4E1321AFE795009AC6F8 /* ShoeCellTableViewCell.swift */,
+				060F91DB21AFED6F00890863 /* ShoeDetailsViewController.swift */,
 				063B7D2C21AFF995004E3A3E /* VideoReviewsTableViewCell.swift */,
 			);
 			path = Grailz;
